@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dabgar Samaj Community App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Landing Page -->
+        <div id="landing-page" class="page">
+            <header class="landing-header">
+                <div class="container">
+                    <div class="header-content">
+                        <h1 class="logo" data-i18n="app_title">🎵 Dabgar Samaj Community</h1>
+                        <div class="header-right">
+                            <div class="language-switcher">
+                                <button class="lang-btn active" onclick="SamajApp.switchLanguage('en')" data-lang="en">
+                                    <span class="lang-flag">🇺🇸</span>
+                                    <span class="lang-text">EN</span>
+                                </button>
+                                <button class="lang-btn" onclick="SamajApp.switchLanguage('hi')" data-lang="hi">
+                                    <span class="lang-flag">🇮🇳</span>
+                                    <span class="lang-text">हिं</span>
+                                </button>
+                                <button class="lang-btn" onclick="SamajApp.switchLanguage('gu')" data-lang="gu">
+                                    <span class="lang-flag">🇮🇳</span>
+                                    <span class="lang-text">ગુ</span>
+                                </button>
+                            </div>
+                            <div class="auth-buttons">
+                                <button class="btn btn--outline" onclick="showLogin()" data-i18n="login">Login</button>
+                                <button class="btn btn--primary" onclick="showRegister()" data-i18n="register">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="landing-main">
+                <section class="hero">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 data-i18n="hero_title">एकजुट रहें, जुड़े रहें</h1>
+                            <h2 data-i18n="hero_subtitle">Unified Digital Platform for Dabgar Samaj</h2>
+                            <p data-i18n="hero_description">Connect with your community, preserve traditions, and build stronger bonds across cities and generations.</p>
+                            <div class="hero-stats">
+                                <div class="stat">
+                                    <span class="stat-number">500+</span>
+                                    <span class="stat-label" data-i18n="stats_families">Families</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">1200+</span>
+                                    <span class="stat-label" data-i18n="stats_members">Members</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">4</span>
+                                    <span class="stat-label" data-i18n="stats_states">States</span>
+                                </div>
+                            </div>
+                            <button class="btn btn--primary btn--lg" onclick="showRegister()" data-i18n="join_community">Join Our Community</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="features">
+                    <div class="container">
+                        <h2 data-i18n="app_features">App Features</h2>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">👥</div>
+                                <h3 data-i18n="feature_family_title">Family Profiles</h3>
+                                <p data-i18n="feature_family_desc">Complete family registration with member profiles and relationship mapping</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📱</div>
+                                <h3 data-i18n="feature_feed_title">Community Feed</h3>
+                                <p data-i18n="feature_feed_desc">Stay connected with community updates, celebrations, and announcements</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📅</div>
+                                <h3 data-i18n="feature_events_title">Events Calendar</h3>
+                                <p data-i18n="feature_events_desc">Never miss community gatherings, weddings, and cultural celebrations</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">💑</div>
+                                <h3 data-i18n="feature_matrimony_title">Matrimony</h3>
+                                <p data-i18n="feature_matrimony_desc">Find suitable matches within our community with privacy controls</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">💼</div>
+                                <h3 data-i18n="feature_jobs_title">Jobs & Business</h3>
+                                <p data-i18n="feature_jobs_desc">Discover job opportunities and promote businesses within the community</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🩸</div>
+                                <h3 data-i18n="feature_blood_title">Blood Donation</h3>
+                                <p data-i18n="feature_blood_desc">Emergency help network and blood donor directory for quick assistance</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Login Modal -->
+        <div id="login-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 data-i18n="login_title">Login to Your Account</h3>
+                    <button class="close-btn" onclick="hideModal('login-modal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label class="form-label" for="login-phone" data-i18n="mobile_number">Mobile Number</label>
+                            <input type="tel" id="login-phone" class="form-control" data-i18n-placeholder="enter_mobile" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="login-otp" data-i18n="otp">OTP</label>
+                            <input type="text" id="login-otp" class="form-control" data-i18n-placeholder="enter_otp" maxlength="6" required>
+                        </div>
+                        <button type="button" class="btn btn--primary btn--full-width" onclick="sendOTP('login')" data-i18n="send_otp">Send OTP</button>
+                        <button type="submit" class="btn btn--primary btn--full-width mt-8 hidden" id="verify-login-btn" data-i18n="verify_login">Verify & Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Modal -->
+        <div id="register-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 data-i18n="register_family">Register Your Family</h3>
+                    <button class="close-btn" onclick="hideModal('register-modal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label class="form-label" for="family-head-name" data-i18n="family_head_name">Family Head Name</label>
+                            <input type="text" id="family-head-name" class="form-control" data-i18n-placeholder="enter_family_head_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="register-phone" data-i18n="mobile_number">Mobile Number</label>
+                            <input type="tel" id="register-phone" class="form-control" data-i18n-placeholder="enter_mobile" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="city" data-i18n="city">City</label>
+                            <select id="city" class="form-control" required>
+                                <option value="" data-i18n="select_city">Select City</option>
+                                <option value="Ahmedabad, Gujarat">Ahmedabad, Gujarat</option>
+                                <option value="Surat, Gujarat">Surat, Gujarat</option>
+                                <option value="Vadodara, Gujarat">Vadodara, Gujarat</option>
+                                <option value="Mumbai, Maharashtra">Mumbai, Maharashtra</option>
+                                <option value="Pune, Maharashtra">Pune, Maharashtra</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width" data-i18n="register_family">Register Family</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main App -->
+        <div id="main-app" class="page hidden">
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <div class="container">
+                    <div class="nav-content">
+                        <div class="nav-logo" data-i18n="app_title_short">🎵 Dabgar Samaj</div>
+                        <div class="nav-links">
+                            <button class="nav-link active" data-section="home" data-i18n="nav_home">Home</button>
+                            <button class="nav-link" data-section="directory" data-i18n="nav_directory">Directory</button>
+                            <button class="nav-link" data-section="family" data-i18n="nav_family">Family</button>
+                            <button class="nav-link" data-section="calendar" data-i18n="nav_calendar">Calendar</button>
+                            <button class="nav-link" data-section="matrimony" data-i18n="nav_matrimony">Matrimony</button>
+                            <button class="nav-link" data-section="jobs" data-i18n="nav_jobs">Jobs</button>
+                            <button class="nav-link" data-section="emergency" data-i18n="nav_emergency">Emergency</button>
+                            <button class="nav-link" data-section="admin" data-i18n="nav_admin">Admin</button>
+                            <button class="nav-link" data-section="help" data-i18n="nav_help">Help</button>
+                        </div>
+                        <div class="nav-user">
+                            <div class="language-switcher nav-language">
+                                <button class="lang-btn active" onclick="SamajApp.switchLanguage('en')" data-lang="en">
+                                    <span class="lang-flag">🇺🇸</span>
+                                    <span class="lang-text">EN</span>
+                                </button>
+                                <button class="lang-btn" onclick="SamajApp.switchLanguage('hi')" data-lang="hi">
+                                    <span class="lang-flag">🇮🇳</span>
+                                    <span class="lang-text">हिं</span>
+                                </button>
+                                <button class="lang-btn" onclick="SamajApp.switchLanguage('gu')" data-lang="gu">
+                                    <span class="lang-flag">🇮🇳</span>
+                                    <span class="lang-text">ગુ</span>
+                                </button>
+                            </div>
+                            <button class="btn btn--outline btn--sm" onclick="logout()" data-i18n="logout">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Content Container -->
+            <main class="app-main">
+                <div id="view" class="view-container">
+                    <!-- Content will be dynamically loaded here -->
+                </div>
+            </main>
+        </div>
+
+        <!-- Admin Password Modal -->
+        <div id="admin-password-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 data-i18n="admin_access">Admin Access</h3>
+                    <button class="close-btn" onclick="hideModal('admin-password-modal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="admin-password-form">
+                        <div class="form-group">
+                            <label class="form-label" for="admin-password" data-i18n="enter_admin_password">Enter Admin Password</label>
+                            <input type="password" id="admin-password" class="form-control" data-i18n-placeholder="enter_password" required>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width" data-i18n="access_admin_panel">Access Admin Panel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Family Registration Modal -->
+        <div id="family-register-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 data-i18n="register_new_family">Register New Family</h3>
+                    <button class="close-btn" onclick="hideModal('family-register-modal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="family-register-form">
+                        <div class="form-group">
+                            <label class="form-label" for="family-surname" data-i18n="family_surname">Family Surname</label>
+                            <input type="text" id="family-surname" class="form-control" data-i18n-placeholder="enter_family_surname" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="family-city" data-i18n="city">City</label>
+                            <input type="text" id="family-city" class="form-control" data-i18n-placeholder="enter_city" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="family-head" data-i18n="family_head_name">Family Head Name</label>
+                            <input type="text" id="family-head" class="form-control" data-i18n-placeholder="enter_family_head_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="family-members" data-i18n="family_members">Family Members (comma separated)</label>
+                            <textarea id="family-members" class="form-control" data-i18n-placeholder="enter_family_members" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width" data-i18n="register_family">Register Family</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency SOS Modal -->
+        <div id="emergency-sos-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 data-i18n="emergency_sos_request">Emergency SOS Request</h3>
+                    <button class="close-btn" onclick="hideModal('emergency-sos-modal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="emergency-sos-form">
+                        <div class="form-group">
+                            <label class="form-label" for="emergency-type" data-i18n="emergency_type">Emergency Type</label>
+                            <select id="emergency-type" class="form-control" required>
+                                <option value="" data-i18n="select_emergency_type">Select Emergency Type</option>
+                                <option value="medical" data-i18n="medical_emergency">Medical Emergency</option>
+                                <option value="blood" data-i18n="blood_needed">Blood Urgently Needed</option>
+                                <option value="accident" data-i18n="accident">Accident</option>
+                                <option value="fire" data-i18n="fire_emergency">Fire Emergency</option>
+                                <option value="other" data-i18n="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emergency-message" data-i18n="emergency_message">Emergency Message</label>
+                            <textarea id="emergency-message" class="form-control" data-i18n-placeholder="describe_emergency" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emergency-location" data-i18n="location">Location</label>
+                            <input type="text" id="emergency-location" class="form-control" data-i18n-placeholder="enter_location" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emergency-contact" data-i18n="contact_number">Contact Number</label>
+                            <input type="tel" id="emergency-contact" class="form-control" data-i18n-placeholder="enter_contact_number" required>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width" data-i18n="send_emergency_alert">Send Emergency Alert</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Event Modal -->
+        <div id="create-event-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 data-i18n="create_new_event">Create New Event</h3>
+                    <button class="close-btn" onclick="hideModal('create-event-modal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="create-event-form">
+                        <div class="form-group">
+                            <label class="form-label" for="event-title" data-i18n="event_title">Event Title</label>
+                            <input type="text" id="event-title" class="form-control" data-i18n-placeholder="enter_event_title" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="event-date" data-i18n="event_date">Event Date</label>
+                            <input type="date" id="event-date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="event-location" data-i18n="location">Location</label>
+                            <input type="text" id="event-location" class="form-control" data-i18n-placeholder="enter_event_location" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="event-description" data-i18n="description">Description</label>
+                            <textarea id="event-description" class="form-control" data-i18n-placeholder="enter_event_description" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width" data-i18n="create_event">Create Event</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
