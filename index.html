@@ -3,335 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dabgar Samaj Community App</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Neel Fashion Store - Lunawada, Gujarat</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
-        <!-- Landing Page -->
-        <div id="landing-page" class="page">
-            <header class="landing-header">
-                <div class="container">
-                    <div class="header-content">
-                        <h1 class="logo" data-i18n="app_title">🎵 Dabgar Samaj Community</h1>
-                        <div class="header-right">
-                            <div class="language-switcher">
-                                <button class="lang-btn active" onclick="SamajApp.switchLanguage('en')" data-lang="en">
-                                    <span class="lang-flag">🇺🇸</span>
-                                    <span class="lang-text">EN</span>
-                                </button>
-                                <button class="lang-btn" onclick="SamajApp.switchLanguage('hi')" data-lang="hi">
-                                    <span class="lang-flag">🇮🇳</span>
-                                    <span class="lang-text">हिं</span>
-                                </button>
-                                <button class="lang-btn" onclick="SamajApp.switchLanguage('gu')" data-lang="gu">
-                                    <span class="lang-flag">🇮🇳</span>
-                                    <span class="lang-text">ગુ</span>
-                                </button>
-                            </div>
-                            <div class="auth-buttons">
-                                <button class="btn btn--outline" onclick="showLogin()" data-i18n="login">Login</button>
-                                <button class="btn btn--primary" onclick="showRegister()" data-i18n="register">Register</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="navbar__inner">
+            <div class="nav-logo">Neel Fashion</div>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
 
-            <main class="landing-main">
-                <section class="hero">
-                    <div class="container">
-                        <div class="hero-content">
-                            <h1 data-i18n="hero_title">एकजुट रहें, जुड़े रहें</h1>
-                            <h2 data-i18n="hero_subtitle">Unified Digital Platform for Dabgar Samaj</h2>
-                            <p data-i18n="hero_description">Connect with your community, preserve traditions, and build stronger bonds across cities and generations.</p>
-                            <div class="hero-stats">
-                                <div class="stat">
-                                    <span class="stat-number">500+</span>
-                                    <span class="stat-label" data-i18n="stats_families">Families</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-number">1200+</span>
-                                    <span class="stat-label" data-i18n="stats_members">Members</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-number">4</span>
-                                    <span class="stat-label" data-i18n="stats_states">States</span>
-                                </div>
-                            </div>
-                            <button class="btn btn--primary btn--lg" onclick="showRegister()" data-i18n="join_community">Join Our Community</button>
-                        </div>
-                    </div>
-                </section>
+            <!-- Admin Access Controls -->
+            <div class="admin-access-controls">
+                <input type="password" id="adminSecretInput" placeholder="Enter admin password" class="admin-input">
+                <button id="adminAccessBtn" class="btn btn--secondary btn--sm">Unlock Admin</button>
+                <button id="hideAdminBtn" class="btn btn--outline btn--sm hidden">Hide Admin Panel</button>
+            </div>
 
-                <section class="features">
-                    <div class="container">
-                        <h2 data-i18n="app_features">App Features</h2>
-                        <div class="features-grid">
-                            <div class="feature-card">
-                                <div class="feature-icon">👥</div>
-                                <h3 data-i18n="feature_family_title">Family Profiles</h3>
-                                <p data-i18n="feature_family_desc">Complete family registration with member profiles and relationship mapping</p>
-                            </div>
-                            <div class="feature-card">
-                                <div class="feature-icon">📱</div>
-                                <h3 data-i18n="feature_feed_title">Community Feed</h3>
-                                <p data-i18n="feature_feed_desc">Stay connected with community updates, celebrations, and announcements</p>
-                            </div>
-                            <div class="feature-card">
-                                <div class="feature-icon">📅</div>
-                                <h3 data-i18n="feature_events_title">Events Calendar</h3>
-                                <p data-i18n="feature_events_desc">Never miss community gatherings, weddings, and cultural celebrations</p>
-                            </div>
-                            <div class="feature-card">
-                                <div class="feature-icon">💑</div>
-                                <h3 data-i18n="feature_matrimony_title">Matrimony</h3>
-                                <p data-i18n="feature_matrimony_desc">Find suitable matches within our community with privacy controls</p>
-                            </div>
-                            <div class="feature-card">
-                                <div class="feature-icon">💼</div>
-                                <h3 data-i18n="feature_jobs_title">Jobs & Business</h3>
-                                <p data-i18n="feature_jobs_desc">Discover job opportunities and promote businesses within the community</p>
-                            </div>
-                            <div class="feature-card">
-                                <div class="feature-icon">🩸</div>
-                                <h3 data-i18n="feature_blood_title">Blood Donation</h3>
-                                <p data-i18n="feature_blood_desc">Emergency help network and blood donor directory for quick assistance</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-        </div>
-
-        <!-- Login Modal -->
-        <div id="login-modal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 data-i18n="login_title">Login to Your Account</h3>
-                    <button class="close-btn" onclick="hideModal('login-modal')">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form id="login-form">
-                        <div class="form-group">
-                            <label class="form-label" for="login-phone" data-i18n="mobile_number">Mobile Number</label>
-                            <input type="tel" id="login-phone" class="form-control" data-i18n-placeholder="enter_mobile" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="login-otp" data-i18n="otp">OTP</label>
-                            <input type="text" id="login-otp" class="form-control" data-i18n-placeholder="enter_otp" maxlength="6" required>
-                        </div>
-                        <button type="button" class="btn btn--primary btn--full-width" onclick="sendOTP('login')" data-i18n="send_otp">Send OTP</button>
-                        <button type="submit" class="btn btn--primary btn--full-width mt-8 hidden" id="verify-login-btn" data-i18n="verify_login">Verify & Login</button>
-                    </form>
-                </div>
+            <!-- Instagram Link -->
+            <div class="nav-social">
+                <a href="https://www.instagram.com/neel.fashion.store/" target="_blank" class="instagram-link">
+                    📸 Instagram
+                </a>
             </div>
         </div>
+        
+        <!-- Admin Error Message -->
+        <div id="adminError" class="admin-error hidden">Invalid access code. Please try again.</div>
+    </nav>
 
-        <!-- Register Modal -->
-        <div id="register-modal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 data-i18n="register_family">Register Your Family</h3>
-                    <button class="close-btn" onclick="hideModal('register-modal')">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form id="register-form">
-                        <div class="form-group">
-                            <label class="form-label" for="family-head-name" data-i18n="family_head_name">Family Head Name</label>
-                            <input type="text" id="family-head-name" class="form-control" data-i18n-placeholder="enter_family_head_name" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="register-phone" data-i18n="mobile_number">Mobile Number</label>
-                            <input type="tel" id="register-phone" class="form-control" data-i18n-placeholder="enter_mobile" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="city" data-i18n="city">City</label>
-                            <select id="city" class="form-control" required>
-                                <option value="" data-i18n="select_city">Select City</option>
-                                <option value="Ahmedabad, Gujarat">Ahmedabad, Gujarat</option>
-                                <option value="Surat, Gujarat">Surat, Gujarat</option>
-                                <option value="Vadodara, Gujarat">Vadodara, Gujarat</option>
-                                <option value="Mumbai, Maharashtra">Mumbai, Maharashtra</option>
-                                <option value="Pune, Maharashtra">Pune, Maharashtra</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn--primary btn--full-width" data-i18n="register_family">Register Family</button>
-                    </form>
-                </div>
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator hidden">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero__content">
+            <div class="hero-text">
+                <h1 class="hero-title">Neel Fashion Store</h1>
+                <p class="hero-tagline">Street-meets-Ethnic Styles in Lunawada, Gujarat</p>
+                <p class="hero-description">Discover trendy fashion for men, women, kids & accessories</p>
+                <button class="cta-btn" onclick="scrollToProducts()">Shop Now</button>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80" alt="Fashion Store" width="600" height="320" loading="eager" />
             </div>
         </div>
+    </section>
 
-        <!-- Main App -->
-        <div id="main-app" class="page hidden">
-            <!-- Navigation -->
-            <nav class="main-nav">
-                <div class="container">
-                    <div class="nav-content">
-                        <div class="nav-logo" data-i18n="app_title_short">🎵 Dabgar Samaj</div>
-                        <div class="nav-links">
-                            <button class="nav-link active" data-section="home" data-i18n="nav_home">Home</button>
-                            <button class="nav-link" data-section="directory" data-i18n="nav_directory">Directory</button>
-                            <button class="nav-link" data-section="family" data-i18n="nav_family">Family</button>
-                            <button class="nav-link" data-section="calendar" data-i18n="nav_calendar">Calendar</button>
-                            <button class="nav-link" data-section="matrimony" data-i18n="nav_matrimony">Matrimony</button>
-                            <button class="nav-link" data-section="jobs" data-i18n="nav_jobs">Jobs</button>
-                            <button class="nav-link" data-section="emergency" data-i18n="nav_emergency">Emergency</button>
-                            <button class="nav-link" data-section="admin" data-i18n="nav_admin">Admin</button>
-                            <button class="nav-link" data-section="help" data-i18n="nav_help">Help</button>
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <div class="products-header">
+                <h2 class="section-title">Products</h2>
+                <div class="product-counter">
+                    <span id="productCount">20</span> of 20 products
+                </div>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-label">Filter by Category</div>
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="All">All</button>
+                    <button class="filter-btn" data-category="Men">Men</button>
+                    <button class="filter-btn" data-category="Women">Women</button>
+                    <button class="filter-btn" data-category="Kids">Kids</button>
+                    <button class="filter-btn" data-category="Accessories">Accessories</button>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search products..." class="search-input">
+                    <div class="search-loading hidden">Searching...</div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be rendered here by JavaScript -->
+            </div>
+            
+            <!-- Load More Button (for virtual scrolling) -->
+            <div class="load-more-container">
+                <button id="loadMoreBtn" class="btn btn--outline hidden">Load More Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Product Section (Hidden by default, admin only) -->
+    <section id="add-product" class="add-product-section hidden">
+        <div class="container">
+            <h2 class="section-title">Add Product</h2>
+            <div class="add-product-form">
+                <form id="productForm" class="product-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productName" class="form-label">Product Name *</label>
+                            <input type="text" id="productName" class="form-control" required maxlength="100">
                         </div>
-                        <div class="nav-user">
-                            <div class="language-switcher nav-language">
-                                <button class="lang-btn active" onclick="SamajApp.switchLanguage('en')" data-lang="en">
-                                    <span class="lang-flag">🇺🇸</span>
-                                    <span class="lang-text">EN</span>
-                                </button>
-                                <button class="lang-btn" onclick="SamajApp.switchLanguage('hi')" data-lang="hi">
-                                    <span class="lang-flag">🇮🇳</span>
-                                    <span class="lang-text">हिं</span>
-                                </button>
-                                <button class="lang-btn" onclick="SamajApp.switchLanguage('gu')" data-lang="gu">
-                                    <span class="lang-flag">🇮🇳</span>
-                                    <span class="lang-text">ગુ</span>
-                                </button>
-                            </div>
-                            <button class="btn btn--outline btn--sm" onclick="logout()" data-i18n="logout">Logout</button>
+                        <div class="form-group">
+                            <label for="productPrice" class="form-label">Price (₹) *</label>
+                            <input type="number" id="productPrice" class="form-control" min="1" max="999999" required>
                         </div>
                     </div>
-                </div>
-            </nav>
-
-            <!-- Content Container -->
-            <main class="app-main">
-                <div id="view" class="view-container">
-                    <!-- Content will be dynamically loaded here -->
-                </div>
-            </main>
-        </div>
-
-        <!-- Admin Password Modal -->
-        <div id="admin-password-modal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 data-i18n="admin_access">Admin Access</h3>
-                    <button class="close-btn" onclick="hideModal('admin-password-modal')">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form id="admin-password-form">
+                    
+                    <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label" for="admin-password" data-i18n="enter_admin_password">Enter Admin Password</label>
-                            <input type="password" id="admin-password" class="form-control" data-i18n-placeholder="enter_password" required>
-                        </div>
-                        <button type="submit" class="btn btn--primary btn--full-width" data-i18n="access_admin_panel">Access Admin Panel</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Family Registration Modal -->
-        <div id="family-register-modal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 data-i18n="register_new_family">Register New Family</h3>
-                    <button class="close-btn" onclick="hideModal('family-register-modal')">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form id="family-register-form">
-                        <div class="form-group">
-                            <label class="form-label" for="family-surname" data-i18n="family_surname">Family Surname</label>
-                            <input type="text" id="family-surname" class="form-control" data-i18n-placeholder="enter_family_surname" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="family-city" data-i18n="city">City</label>
-                            <input type="text" id="family-city" class="form-control" data-i18n-placeholder="enter_city" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="family-head" data-i18n="family_head_name">Family Head Name</label>
-                            <input type="text" id="family-head" class="form-control" data-i18n-placeholder="enter_family_head_name" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="family-members" data-i18n="family_members">Family Members (comma separated)</label>
-                            <textarea id="family-members" class="form-control" data-i18n-placeholder="enter_family_members" rows="4"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--primary btn--full-width" data-i18n="register_family">Register Family</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Emergency SOS Modal -->
-        <div id="emergency-sos-modal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 data-i18n="emergency_sos_request">Emergency SOS Request</h3>
-                    <button class="close-btn" onclick="hideModal('emergency-sos-modal')">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form id="emergency-sos-form">
-                        <div class="form-group">
-                            <label class="form-label" for="emergency-type" data-i18n="emergency_type">Emergency Type</label>
-                            <select id="emergency-type" class="form-control" required>
-                                <option value="" data-i18n="select_emergency_type">Select Emergency Type</option>
-                                <option value="medical" data-i18n="medical_emergency">Medical Emergency</option>
-                                <option value="blood" data-i18n="blood_needed">Blood Urgently Needed</option>
-                                <option value="accident" data-i18n="accident">Accident</option>
-                                <option value="fire" data-i18n="fire_emergency">Fire Emergency</option>
-                                <option value="other" data-i18n="other">Other</option>
+                            <label for="productCategory" class="form-label">Category *</label>
+                            <select id="productCategory" class="form-control" required>
+                                <option value="">Select category</option>
+                                <option value="Men">Men</option>
+                                <option value="Women">Women</option>
+                                <option value="Kids">Kids</option>
+                                <option value="Accessories">Accessories</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="emergency-message" data-i18n="emergency_message">Emergency Message</label>
-                            <textarea id="emergency-message" class="form-control" data-i18n-placeholder="describe_emergency" rows="4" required></textarea>
+                            <label for="productSizes" class="form-label">Sizes (comma separated) *</label>
+                            <input type="text" id="productSizes" class="form-control" placeholder="S, M, L, XL" required maxlength="200">
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="emergency-location" data-i18n="location">Location</label>
-                            <input type="text" id="emergency-location" class="form-control" data-i18n-placeholder="enter_location" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productImage" class="form-label">Image URL (optional - will use placeholder if blank or invalid)</label>
+                        <input type="url" id="productImage" class="form-control" placeholder="https://example.com/image.jpg">
+                        <div class="image-preview">
+                            <img id="imagePreview" class="preview-image hidden" alt="Image Preview" width="200" height="200">
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="emergency-contact" data-i18n="contact_number">Contact Number</label>
-                            <input type="tel" id="emergency-contact" class="form-control" data-i18n-placeholder="enter_contact_number" required>
-                        </div>
-                        <button type="submit" class="btn btn--primary btn--full-width" data-i18n="send_emergency_alert">Send Emergency Alert</button>
-                    </form>
-                </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productDescription" class="form-label">Description *</label>
+                        <textarea id="productDescription" class="form-control" rows="3" required maxlength="500"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn--primary btn--full-width">Add Product</button>
+                </form>
             </div>
         </div>
+    </section>
 
-        <!-- Create Event Modal -->
-        <div id="create-event-modal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 data-i18n="create_new_event">Create New Event</h3>
-                    <button class="close-btn" onclick="hideModal('create-event-modal')">&times;</button>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About</h2>
+            <div class="about-content">
+                <p>Welcome to Neel Fashion Store, your premier destination for contemporary and ethnic fashion in Lunawada, Gujarat. We pride ourselves on offering the perfect blend of street-style and traditional wear that speaks to the modern Indian fashion enthusiast.</p>
+                
+                <div class="store-info">
+                    <h3>Store Details</h3>
+                    <p><strong>Address:</strong> Soniwad, Parabazar, Lunawada, Gujarat</p>
+                    <p><strong>Phone:</strong> +91 7878887678</p>
+                    <p><strong>Operating Hours:</strong> 10 AM – 9 PM (Daily)</p>
                 </div>
-                <div class="modal-body">
-                    <form id="create-event-form">
-                        <div class="form-group">
-                            <label class="form-label" for="event-title" data-i18n="event_title">Event Title</label>
-                            <input type="text" id="event-title" class="form-control" data-i18n-placeholder="enter_event_title" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="event-date" data-i18n="event_date">Event Date</label>
-                            <input type="date" id="event-date" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="event-location" data-i18n="location">Location</label>
-                            <input type="text" id="event-location" class="form-control" data-i18n-placeholder="enter_event_location" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="event-description" data-i18n="description">Description</label>
-                            <textarea id="event-description" class="form-control" data-i18n-placeholder="enter_event_description" rows="4"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--primary btn--full-width" data-i18n="create_event">Create Event</button>
-                    </form>
+
+                <div class="usp-points">
+                    <h3>Why Choose Us?</h3>
+                    <ul>
+                        <li>Affordable fashion combos</li>
+                        <li>Daily new drops and fresh collections</li>
+                        <li>Personalized Gujarati service</li>
+                        <li>Quality fabrics and trendy designs</li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Phone</h3>
+                        <a href="tel:+917878887678" class="contact-link">+91 7878887678</a>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Instagram</h3>
+                        <a href="https://www.instagram.com/neel.fashion.store/" target="_blank" class="contact-link">@neel.fashion.store</a>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Location</h3>
+                        <p>Soniwad, Parabazar, Lunawada, Gujarat</p>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29344.02647855!2d73.6!3d23.13!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2b9f6b9a9f9f%3A0x0!2sLunawada%2C+Gujarat!5e0!3m2!1sen!2sin!4v1609459200000!5m2!1sen!2sin"
+                        width="100%" 
+                        height="300"
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="" width="400" height="400" loading="lazy" />
+                </div>
+                <div class="modal-details">
+                    <h3 id="modalName"></h3>
+                    <div id="modalCategory" class="modal-category"></div>
+                    <p id="modalDescription" class="modal-description"></p>
+                    <div id="modalPrice" class="modal-price"></div>
+                    
+                    <div class="size-selector">
+                        <label for="sizeSelect" class="form-label">Size:</label>
+                        <select id="sizeSelect" class="form-control">
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button id="orderButton" class="btn btn--primary">Order via WhatsApp</button>
+                        <button id="deleteButton" class="btn btn--outline admin-only hidden" onclick="confirmDelete()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeDeleteModal()"></div>
+        <div class="modal-content modal-small">
+            <div class="modal-body">
+                <h3>Confirm Delete</h3>
+                <p>Are you sure you want to delete this product? This action cannot be undone.</p>
+                <div class="modal-actions">
+                    <button class="btn btn--primary" onclick="deleteProduct()">Yes, Delete</button>
+                    <button class="btn btn--outline" onclick="closeDeleteModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast hidden">
+        <span id="toastMessage"></span>
     </div>
 
     <script src="app.js"></script>
